@@ -1,42 +1,33 @@
 import 'package:flutter/material.dart';
 
 class MyTheme {
-  // Using the light blue from the logo images
-  static const Color primaryBlue = Color(0xFF3AB2E8); 
-  static const Color secondaryBlue = Color(0xFF0091EA);
-  
+  static const Color orbitBlue = Color(0xFF3AB2E8);
+  static const Color deepNavy = Color(0xFF1A237E);
+
   static ThemeData lightTheme = ThemeData(
-    primaryColor: primaryBlue,
+    primaryColor: orbitBlue,
+    scaffoldBackgroundColor: Colors.white,
     appBarTheme: AppBarTheme(
-      backgroundColor: primaryBlue,
-      centerTitle: true,
+      backgroundColor: Colors.white,
       elevation: 0,
+      centerTitle: true,
       titleTextStyle: TextStyle(
-        color: Colors.white,
-        fontSize: 20,
+        color: orbitBlue,
+        fontSize: 22,
         fontWeight: FontWeight.bold,
       ),
-      iconTheme: IconThemeData(color: Colors.white),
-    ),
-    textTheme: TextTheme(
-      titleLarge: TextStyle(
-        fontSize: 18,
-        fontWeight: FontWeight.bold,
-        color: primaryBlue,
-      ),
-      bodyMedium: TextStyle(
-        fontSize: 14,
-        color: Colors.black87,
-      ),
+      iconTheme: IconThemeData(color: orbitBlue),
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: primaryBlue,
+        backgroundColor: orbitBlue,
         foregroundColor: Colors.white,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       ),
+    ),
+    textTheme: TextTheme(
+      titleLarge: TextStyle(color: deepNavy, fontWeight: FontWeight.bold),
+      bodyMedium: TextStyle(color: Colors.black87),
     ),
   );
 }
