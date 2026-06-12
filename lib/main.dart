@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:orbit_volunteers_flutter/Home/Home_Screen.dart';
-import 'package:orbit_volunteers_flutter/Blog/Blog_Screen.dart';
-import 'package:orbit_volunteers_flutter/My_Theme.dart';
+import 'package:orbit_volunteers_flutter/core/routing/router_generation_config.dart';
+import 'package:orbit_volunteers_flutter/core/theme/app_theme.dart';
 
+// app start hear
 void main() {
-  runApp(MyApp());
+  runApp(const OrbitApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// the whole app
+class OrbitApp extends StatelessWidget {
+  const OrbitApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      theme: MyTheme.lightTheme,
-      initialRoute: HomeScreen.routeName,
-      routes: {
-        HomeScreen.routeName: (context) => HomeScreen(),
-        BlogScreen.routeName: (context) => BlogScreen(),
-      },
+      title: 'Orbit Volunteers',
+      theme: AppTheme.lightTheme,
+      routerConfig: AppRouter.router,
     );
   }
 }
