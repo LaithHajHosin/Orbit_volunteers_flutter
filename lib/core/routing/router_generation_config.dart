@@ -9,7 +9,7 @@ import 'package:orbit_volunteers_flutter/features/Auth/login_screen.dart';
 import 'package:orbit_volunteers_flutter/features/Auth/register_screen.dart';
 import 'package:orbit_volunteers_flutter/core/constants/colors/app_color.dart';
 
-// Handling all the navigation here
+// router is hear
 class AppRouter {
   static final router = GoRouter(
     initialLocation: AppRoute.homeScreen,
@@ -23,9 +23,7 @@ class AppRouter {
         builder: (context, state) => const RegisterScreen(),
       ),
       ShellRoute(
-        builder: (context, state, child) {
-          return MainScaffold(child: child);
-        },
+        builder: (context, state, child) => MainScaffold(child: child),
         routes: [
           GoRoute(
             path: AppRoute.homeScreen,
@@ -33,7 +31,7 @@ class AppRouter {
           ),
           GoRoute(
             path: AppRoute.projectScreen,
-            builder: (context, state) => ProjectScreen(),
+            builder: (context, state) => const ProjectScreen(),
           ),
           GoRoute(
             path: AppRoute.blogScreen,
@@ -49,6 +47,7 @@ class AppRouter {
   );
 }
 
+// main scaffol for bar
 class MainScaffold extends StatelessWidget {
   final Widget child;
   const MainScaffold({required this.child, super.key});
@@ -56,10 +55,19 @@ class MainScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Image.asset(
+          'assets/images/photo_2026-06-04_13-00-13.jpg',
+          height: 40,
+        ),
+        centerTitle: true,
+        backgroundColor: AppColors.primaryBlue,
+        elevation: 0,
+      ),
       body: child,
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _calculateSelectedIndex(context),
-        onTap: (index) => _onItemTapped(index, context),
+        currentIndex: calculateIndex(context),
+        onTap: (index) => goToPage(index, context),
         type: BottomNavigationBarType.fixed,
         selectedItemColor: AppColors.primaryBlue,
         unselectedItemColor: Colors.grey,
@@ -73,29 +81,19 @@ class MainScaffold extends StatelessWidget {
     );
   }
 
-  static int _calculateSelectedIndex(BuildContext context) {
-    final String location = GoRouterState.of(context).uri.path;
-    if (location == AppRoute.homeScreen) return 0;
-    if (location == AppRoute.projectScreen) return 1;
-    if (location == AppRoute.blogScreen) return 2;
-    if (location == AppRoute.profileScreen) return 3;
+  static int calculateIndex(BuildContext context) {
+    final String locatn = GoRouterState.of(context).uri.path;
+    if (locatn == AppRoute.homeScreen) return 0;
+    if (locatn == AppRoute.projectScreen) return 1;
+    if (locatn == AppRoute.blogScreen) return 2;
+    if (locatn == AppRoute.profileScreen) return 3;
     return 0;
   }
 
-  void _onItemTapped(int index, BuildContext context) {
-    switch (index) {
-      case 0:
-        GoRouter.of(context).go(AppRoute.homeScreen);
-        break;
-      case 1:
-        GoRouter.of(context).go(AppRoute.projectScreen);
-        break;
-      case 2:
-        GoRouter.of(context).go(AppRoute.blogScreen);
-        break;
-      case 3:
-        GoRouter.of(context).go(AppRoute.profileScreen);
-        break;
-    }
+  void goToPage(int index, BuildContext context) {
+    if (index == 0) GoRouter.of(context).go(AppRoute.homeScreen);
+    else if (index == 1) GoRouter.of(context).go(AppRoute.projectScreen);
+    else if (index == 2) GoRouter.of(context).go(AppRoute.blogScreen);
+    else if (index == 3) GoRouter.of(context).go(AppRoute.profileScreen);
   }
 }
