@@ -17,7 +17,7 @@ class LoginScreen extends StatelessWidget {
             children: [
               const Text(
                 'تسجيل الدخول',
-                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppColors.primaryBlue),
+                style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: AppColor.primaryColor),
               ),
               const SizedBox(height: 40),
               const TextField(

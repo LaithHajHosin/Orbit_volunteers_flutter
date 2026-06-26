@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
 
-// this class holds our colors
-class AppColors {
-  // primary blue collor for the app
-  static const Color primaryBlue = Color(0xFF3AB2E8); 
-  // secondary blue collor
-  static const Color secondaryBlue = Color(0xFF0091EA);
-  // white collor
-  static const Color white = Colors.white;
+class AppColor {
+  static const Color primaryColor = Color(0xFF5B4BFF);
+  static const Color secondaryPrimary = Color(0xFF7C6CFF);
+
+  static const Color accentGreen = Color(0xFF22C55E);
+
+  static const Color backgroundColor = Color(0xFFF9FAFB);
+  static const Color cardColor = Color(0xFFFFFFFF);
+
+  static const Color textPrimary = Color(0xFF111827);
+  static const Color textSecondary = Color(0xFF6B7280);
+
+  static const Color borderColor = Color(0xFFE5E7EB);
+
+  static const Color errorColor = Color(0xFFEF4444);
 }

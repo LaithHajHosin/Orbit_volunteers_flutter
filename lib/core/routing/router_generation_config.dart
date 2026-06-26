@@ -57,19 +57,29 @@ class MainScaffold extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Image.asset(
-          'assets/images/photo_2026-06-04_13-00-13.jpg',
-          height: 40,
+          'assets/images/photo_logo1.png',
+          height: 60,
         ),
-        centerTitle: true,
-        backgroundColor: AppColors.primaryBlue,
-        elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.notifications_outlined),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.login_sharp),
+          ),
+        ],
+
+
+
       ),
       body: child,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: calculateIndex(context),
         onTap: (index) => goToPage(index, context),
         type: BottomNavigationBarType.fixed,
-        selectedItemColor: AppColors.primaryBlue,
+        selectedItemColor: AppColor.primaryColor,
         unselectedItemColor: Colors.grey,
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'الرئيسية'),
