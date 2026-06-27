@@ -3,11 +3,13 @@ import 'package:go_router/go_router.dart';
 import 'package:orbit_volunteers_flutter/core/routing/app_route.dart';
 import 'package:orbit_volunteers_flutter/features/Home/home_screen.dart';
 import 'package:orbit_volunteers_flutter/features/Blog/blog_screen.dart';
+import 'package:orbit_volunteers_flutter/features/Blog/blog_detail_screen.dart';
 import 'package:orbit_volunteers_flutter/features/Projects/project_screen.dart';
 import 'package:orbit_volunteers_flutter/features/Profile/profile_screen.dart';
 import 'package:orbit_volunteers_flutter/features/Auth/login_screen.dart';
 import 'package:orbit_volunteers_flutter/features/Auth/register_screen.dart';
 import 'package:orbit_volunteers_flutter/core/constants/colors/app_color.dart';
+import 'package:orbit_volunteers_flutter/models/article.dart';
 
 // router is hear
 class AppRouter {
@@ -21,6 +23,14 @@ class AppRouter {
       GoRoute(
         path: AppRoute.registerScreen,
         builder: (context, state) => const RegisterScreen(),
+      ),
+      // we put detail screen outside shell to hide bottom bar
+      GoRoute(
+        path: AppRoute.blogDetailScreen,
+        builder: (context, state) {
+          final article = state.extra as Article;
+          return BlogDetailScreen(article: article);
+        },
       ),
       ShellRoute(
         builder: (context, state, child) => MainScaffold(child: child),
@@ -70,9 +80,6 @@ class MainScaffold extends StatelessWidget {
             icon: const Icon(Icons.login_sharp),
           ),
         ],
-
-
-
       ),
       body: child,
       bottomNavigationBar: BottomNavigationBar(
